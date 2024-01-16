@@ -1,21 +1,56 @@
+
+
 table, td, th {
-    border: 1px solid black;
+    border: 1px solid white;
   }
 
-  table {
+  /* table {
     display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  tbody {
-      display: flex;
-      flex-direction: row;
-  }
-  tr {
+    border-top: 3px solid #27cdf1;
+    justify-content: space-between;
+    width: 60%;
+    font-size: 0.8em;
+  } */
+  
+  /* tr {
       display: flex;
       flex-direction: column;
+      padding: 0 0.5em;
+  }
+
+  td {
+    padding: 0.5em 0.5em;
+  } */
+
+  .table-dates {
+    background-color: #333333;
+    color: white
+  }
+
+  .table-times {
+    width: 12em;
+  }
+
+  .table-times th {
+    height: 2em;
+  }
+
+  .cell {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: italic;
   }
 
   .full {
-    background-color: red;
+    background-color: #df2536;
+    color: white;
+  }
+
+  .unavailable {
+    background-color:#f6f6f6;
+    color: #7f7f7f;
+  }
+
+  .available {
+    background-color: white;
   }

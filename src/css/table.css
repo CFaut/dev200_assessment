@@ -1,0 +1,21 @@
+table, td, th {
+    border: 1px solid black;
+  }
+
+  table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  tbody {
+      display: flex;
+      flex-direction: row;
+  }
+  tr {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .full {
+    background-color: red;
+  }

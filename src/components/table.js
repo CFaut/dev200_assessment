@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import checkSlotAvailability from "./functions";
+import {checkSlotAvailability, formatSlot} from "./functions";
+
 import "../css/table.css"
 
 function Table({length}) {
@@ -51,7 +52,7 @@ function Table({length}) {
                         <td>{time}:00-{time+1}:00</td>
                 {data.map((data) => (
                         
-                        checkSlotAvailability(time, localLength, data.Date, data.HoursAvailable)
+                        formatSlot(checkSlotAvailability(time, localLength, data.Date, data.HoursAvailable))
                         )) }
                     </tr>
                 ))}

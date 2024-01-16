@@ -14,7 +14,7 @@ function checkSlotAvailability (time, jobLength, date, availability) {
         }
 
         if(!availability.includes(time)) {
-            return <td className="full cell">Full</td>
+            return "FULL"
         };
 
         //if date is today, buffer is 2 hours, otherwise 1 hour
@@ -32,7 +32,7 @@ function checkSlotAvailability (time, jobLength, date, availability) {
             //check if actually available
             for(let i = time - beginningBuffer; i < finishTime; i++) {
                 if(!availability.includes(i)) {
-                    return <td className="unavailable cell">Unavailableb</td>
+                    return "UNAVAILABLE"
                 }
             }
         //check for last slot of the day
@@ -42,7 +42,7 @@ function checkSlotAvailability (time, jobLength, date, availability) {
             //check if actually available
                 for(let i = time - beginningBuffer; i < finishTime; i++) {
                     if(!availability.includes(i)) {
-                        return <td className="unavailable cell">Unavailablea</td>
+                        return "UNAVAILABLE"
                     }
                 }
         } else {
@@ -51,12 +51,23 @@ function checkSlotAvailability (time, jobLength, date, availability) {
             //check if actually available
             for(let i = time - beginningBuffer; i < finishTime; i++) {
                 if(!availability.includes(i)) {
-                    return <td className="unavailable cell">Unavailable</td>
+                    return "UNAVAILABLE"
                 }
             }
         }
 
-        return <td className="available cell">Available</td>;
+        return "AVAILABLE";
     };
 
-    export default checkSlotAvailability;
+
+    function formatSlot(answer) {
+        if(answer === "FULL") {
+            return <td className="full cell">Full</td>
+        } else if(answer === "UNAVAILABLE") {
+            return <td className="unavailable cell">Unavailable</td>
+        } else {
+            return <td className="available cell">Available</td>
+        }
+    }
+
+    export {checkSlotAvailability, formatSlot};

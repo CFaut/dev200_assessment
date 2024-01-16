@@ -1,10 +1,10 @@
-import Slider from "./slider";
-import Table from "./table";
+import Slider from "./components/slider";
+import Table from "./components/table";
 import { useState } from "react";
 
 function App() {
 
-  const [jobLength, setJobLength] = useState('1') 
+  const [jobLength, setJobLength] = useState(1) 
 
   return (
     <div className="App">

@@ -1,8 +1,7 @@
 
 
 function checkSlotAvailability (time, jobLength, date, availability) {
-    let currentDate = '2016-05-20';
-    let currentTime = '11:27:00';
+    let currentDate = '2016-05-18T11:27:00'
 
     // your code here
         if(jobLength > 5 || jobLength < 1) {
@@ -58,15 +57,16 @@ function checkSlotAvailability (time, jobLength, date, availability) {
 
         return "AVAILABLE";
     };
-
-
     function formatSlot(answer) {
-        if(answer === "FULL") {
-            return <td className="full cell">Full</td>
-        } else if(answer === "UNAVAILABLE") {
-            return <td className="unavailable cell">Unavailable</td>
-        } else {
-            return <td className="available cell">Available</td>
+        switch (answer) {
+            case "FULL":
+                return <td className="full cell">Full</td>
+            case "AVAILABLE": 
+                return <td className="available cell">Available</td>
+            case "UNAVAILABLE":
+                return <td className="unavailable cell">Unavailable</td> 
+            default:
+                return <td className="unavailable cell">Unavailable</td>
         }
     }
 

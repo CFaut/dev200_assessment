@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { checkSlotAvailability } from "./functions";
+import { checkSlotAvailability, formatDay } from "./functions";
 import "../css/table.css"
 
 function Table({ length }) {
@@ -39,9 +39,7 @@ function Table({ length }) {
         }
     ];
 
-    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-];
+    const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] ;
 
 
     return (
@@ -53,8 +51,7 @@ function Table({ length }) {
                         <td className="cell header"></td>
                         {data.map((data) => {
                             let date = new Date(data.Date);
-                            
-                            return <th className="cell header">{monthNames[date.getMonth()]} {date.getDate()}</th>
+                            return <th className="cell header">{weekDays[date.getDay()]} {date.getDate()}{formatDay(date)}</th>
                         })}
                     </tr>
                     <tbody>

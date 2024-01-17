@@ -20,7 +20,7 @@ function checkSlotAvailability (time, jobLength, date, availability) {
         const bookingTime = new Date(date)
         bookingTime.setHours(time - 2)
         // Check that the current time is more than 2 hours away from the booking time
-        if(new Date(currentDate).() > bookingTime.getTime()) {
+        if(new Date(currentDate).getTime() > bookingTime.getTime()) {
             return "UNAVAILABLE"
         }
 
@@ -65,9 +65,10 @@ function checkSlotAvailability (time, jobLength, date, availability) {
     console.log(checkSlotAvailability (9, 1, '2016-05-20', [9, 10, 14, 15, 16, 17]))
     console.log(checkSlotAvailability (10, 1, '2016-05-20', [9, 10, 14, 15, 16, 17]))
     console.log(checkSlotAvailability (11, 1, '2016-05-20', [9, 10, 14, 15, 16, 17]))
+
     
-    function formatSlot(answer) {
-        switch (answer) {
+    function formatSlot(availability) {
+        switch (availability) {
             case "FULL":
                 return <td className="full cell">Full</td>
             case "AVAILABLE": 

@@ -17,3 +17,8 @@
   .available {
     background-color: white;
   }
+
+  .selected {
+    background-color: #459d49;
+    color: white
+  }

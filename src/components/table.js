@@ -65,6 +65,9 @@ function Table({ length }) {
                                                 setSelectedTime({ date: data.Date, time, localLength })
                                             }}>Available</td>
                                         case "UNAVAILABLE":
+                                            if (selectedTime.date === data.Date && (time >= selectedTime.time && time < selectedTime.time + selectedTime.localLength)) {
+                                                return <td className="selected cell">Selected</td>
+                                            }
                                             return <td className="unavailable cell">Unavailable</td>
                                         default:
                                             return <td className="unavailable cell">Unavailable</td>

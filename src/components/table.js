@@ -57,12 +57,12 @@ function Table({ length }) {
                                         case "FULL":
                                             return <td className="full cell">Full</td>
                                         case "AVAILABLE":
-                                            if (selectedTime.date === data.Date && selectedTime.time === time) {
+                                            if (selectedTime.date === data.Date && (selectedTime.time === time || (time >= selectedTime.time && time < selectedTime.time + selectedTime.localLength))) {
                                                 return <td className="selected cell">Selected</td>
                                             }
                                             return <td className="available cell" onClick={() => {
                                                 console.log("CLICKED")
-                                                setSelectedTime({ date: data.Date, time })
+                                                setSelectedTime({ date: data.Date, time, localLength })
                                             }}>Available</td>
                                         case "UNAVAILABLE":
                                             return <td className="unavailable cell">Unavailable</td>

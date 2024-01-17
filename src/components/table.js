@@ -45,6 +45,12 @@ function Table({ length }) {
             <h1>Step 2. Select an arrival time.</h1>
             <div className="booking-table">
                 <table>
+                    <tr>
+                        <td className="cell header"></td>
+                        {data.map((data) => {
+                            return <th className="cell header">{data.Date}</th>
+                        })}
+                    </tr>
                     <tbody>
                         {[9, 10, 11, 12, 13, 14, 15, 16, 17].map((time) => (
                             <tr>

@@ -1,6 +1,6 @@
+import { useState } from "react";
 import Slider from "./components/slider";
 import Table from "./components/table";
-import { useState } from "react";
 
 function App() {
 

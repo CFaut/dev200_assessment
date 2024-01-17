@@ -60,10 +60,11 @@ function Table({ length }) {
                                             if (selectedTime.date === data.Date && (selectedTime.time === time || (time >= selectedTime.time && time < selectedTime.time + selectedTime.localLength))) {
                                                 return <td className="selected cell">Selected</td>
                                             }
-                                            return <td className="available cell" onClick={() => {
+                                            return <td><button className="available cell" onClick={() => {
                                                 console.log("CLICKED")
                                                 setSelectedTime({ date: data.Date, time, localLength })
-                                            }}>Available</td>
+                                            }}>
+                                                Available</button></td>
                                         case "UNAVAILABLE":
                                             if (selectedTime.date === data.Date && (time >= selectedTime.time && time < selectedTime.time + selectedTime.localLength)) {
                                                 return <td className="selected cell">Selected</td>

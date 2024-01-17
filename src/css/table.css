@@ -16,6 +16,12 @@
 
   .available {
     background-color: white;
+    border: none;
+    font-size: 1em;
+  }
+
+  .available :hover {
+    cursor: pointer;
   }
 
   .selected {

@@ -1,9 +1,9 @@
 
-
 function checkSlotAvailability (time, jobLength, date, availability) {
-    let currentDate = '2016-05-18T11:27:00'
 
     // your code here
+    let currentDate = '2016-05-19T11:27:00';
+
         if(jobLength > 5 || jobLength < 1) {
             return "Error, please enter a valid JobLength"
         };
@@ -17,29 +17,33 @@ function checkSlotAvailability (time, jobLength, date, availability) {
         };
 
         //if date is today, buffer is 2 hours, otherwise 1 hour
+        const bookingTime = new Date(date)
+        bookingTime.setHours(time - 2)
+        // Check that the current time is more than 2 hours away from the booking time
+        if(new Date(currentDate).() > bookingTime.getTime()) {
+            return "UNAVAILABLE"
+        }
+
         let buffer = 1;
-        let beginningBuffer = 1;
-        if(date === currentDate) {
-            beginningBuffer = 2;
-        } 
+
 
         //check if time is first slot of the day
         if(availability[0] === time) {
             //then beginning buffer not needed unless booking is for current day
-            beginningBuffer > 1? beginningBuffer = 2 : beginningBuffer = 0;
             let finishTime = time + jobLength + buffer;
             //check if actually available
-            for(let i = time - beginningBuffer; i < finishTime; i++) {
+            for(let i = time; i < finishTime; i++) {
                 if(!availability.includes(i)) {
                     return "UNAVAILABLE"
                 }
+                
             }
         //check for last slot of the day
         } else if(time + jobLength === 18) {
             let finishTime = time + jobLength;
 
             //check if actually available
-                for(let i = time - beginningBuffer; i < finishTime; i++) {
+                for(let i = time - 1; i < finishTime; i++) {
                     if(!availability.includes(i)) {
                         return "UNAVAILABLE"
                     }
@@ -48,7 +52,7 @@ function checkSlotAvailability (time, jobLength, date, availability) {
             //buffer before and after counts, so the time slots before and after the job need to remain open
             let finishTime = time + jobLength + buffer;
             //check if actually available
-            for(let i = time - beginningBuffer; i < finishTime; i++) {
+            for(let i = time - 1; i < finishTime; i++) {
                 if(!availability.includes(i)) {
                     return "UNAVAILABLE"
                 }
@@ -57,6 +61,11 @@ function checkSlotAvailability (time, jobLength, date, availability) {
 
         return "AVAILABLE";
     };
+
+    console.log(checkSlotAvailability (9, 1, '2016-05-20', [9, 10, 14, 15, 16, 17]))
+    console.log(checkSlotAvailability (10, 1, '2016-05-20', [9, 10, 14, 15, 16, 17]))
+    console.log(checkSlotAvailability (11, 1, '2016-05-20', [9, 10, 14, 15, 16, 17]))
+    
     function formatSlot(answer) {
         switch (answer) {
             case "FULL":

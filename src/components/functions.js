@@ -2,7 +2,7 @@
 function checkSlotAvailability (time, jobLength, date, availability) {
 
     // your code here
-    let currentDate = '2016-05-19T11:27:00';
+    let currentDate = '2016-05-18T11:27:00';
 
         //some initial checks in case needed at some stage
         if(jobLength > 5 || jobLength < 1) {

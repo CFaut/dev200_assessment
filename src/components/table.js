@@ -39,6 +39,10 @@ function Table({ length }) {
         }
     ];
 
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+];
+
 
     return (
         <div>
@@ -48,7 +52,9 @@ function Table({ length }) {
                     <tr>
                         <td className="cell header"></td>
                         {data.map((data) => {
-                            return <th className="cell header">{data.Date}</th>
+                            let date = new Date(data.Date);
+                            
+                            return <th className="cell header">{monthNames[date.getMonth()]} {date.getDate()}</th>
                         })}
                     </tr>
                     <tbody>
@@ -65,7 +71,6 @@ function Table({ length }) {
                                                 return <td className="selected cell">Selected</td>
                                             }
                                             return <td className="cell"><button className="available" onClick={() => {
-                                                console.log("CLICKED")
                                                 setSelectedTime({ date: data.Date, time, localLength })
                                             }}>
                                                 Available</button></td>

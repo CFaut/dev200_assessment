@@ -29,6 +29,7 @@ table {
   .header {
       background-color: black;
       color: white;
+      border: none;
       border-top: 4px solid #27cdf1;
       height: 3em
   }

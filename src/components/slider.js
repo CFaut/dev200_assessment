@@ -1,5 +1,5 @@
-import '../css/slider.css';
 import React from "react";
+import '../css/slider.css';
 
 function Slider({jobLength, setJobLength}) {
 

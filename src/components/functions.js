@@ -4,6 +4,7 @@ function checkSlotAvailability (time, jobLength, date, availability) {
     // your code here
     let currentDate = '2016-05-19T11:27:00';
 
+        //some initial checks in case needed at some stage
         if(jobLength > 5 || jobLength < 1) {
             return "Error, please enter a valid JobLength"
         };
@@ -12,18 +13,19 @@ function checkSlotAvailability (time, jobLength, date, availability) {
             return "Operating times are from 8:00 - 18:00, please enter a valid time"
         }
 
+        //first check if slot is full
         if(!availability.includes(time)) {
             return "FULL"
         };
 
-        //if date is today, buffer is 2 hours, otherwise 1 hour
+        // Check that the current time is more than 2 hours away from the booking time
         const bookingTime = new Date(date)
         bookingTime.setHours(time - 2)
-        // Check that the current time is more than 2 hours away from the booking time
         if(new Date(currentDate).getTime() > bookingTime.getTime()) {
             return "UNAVAILABLE"
         }
 
+        //declare variable buffer 
         let buffer = 1;
 
 
@@ -62,22 +64,4 @@ function checkSlotAvailability (time, jobLength, date, availability) {
         return "AVAILABLE";
     };
 
-    console.log(checkSlotAvailability (9, 1, '2016-05-20', [9, 10, 14, 15, 16, 17]))
-    console.log(checkSlotAvailability (10, 1, '2016-05-20', [9, 10, 14, 15, 16, 17]))
-    console.log(checkSlotAvailability (11, 1, '2016-05-20', [9, 10, 14, 15, 16, 17]))
-
-    
-    function formatSlot(availability) {
-        switch (availability) {
-            case "FULL":
-                return <td className="full cell">Full</td>
-            case "AVAILABLE": 
-                return <td className="available cell">Available</td>
-            case "UNAVAILABLE":
-                return <td className="unavailable cell">Unavailable</td> 
-            default:
-                return <td className="unavailable cell">Unavailable</td>
-        }
-    }
-
-    export {checkSlotAvailability, formatSlot};
+    export {checkSlotAvailability};

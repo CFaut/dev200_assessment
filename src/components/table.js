@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { checkSlotAvailability, formatSlot } from "./functions";
-
+import { checkSlotAvailability } from "./functions";
 import "../css/table.css"
 
 function Table({ length }) {
@@ -48,9 +47,8 @@ function Table({ length }) {
                 <table>
                     <tbody>
                         {[9, 10, 11, 12, 13, 14, 15, 16, 17].map((time) => (
-
                             <tr>
-                                <td>{time}:00-{time + 1}:00</td>
+                                <td className="table-time">{time}:00-{time + 1}:00</td>
                                 {data.map((data) => {
                                     const availability = checkSlotAvailability(time, localLength, data.Date, data.HoursAvailable)
                                     switch (availability) {
@@ -60,7 +58,7 @@ function Table({ length }) {
                                             if (selectedTime.date === data.Date && (selectedTime.time === time || (time >= selectedTime.time && time < selectedTime.time + selectedTime.localLength))) {
                                                 return <td className="selected cell">Selected</td>
                                             }
-                                            return <td><button className="available cell" onClick={() => {
+                                            return <td className="cell"><button className="available" onClick={() => {
                                                 console.log("CLICKED")
                                                 setSelectedTime({ date: data.Date, time, localLength })
                                             }}>
